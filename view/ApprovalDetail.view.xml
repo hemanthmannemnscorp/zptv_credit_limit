@@ -1,0 +1,172 @@
+<mvc:View controllerName="com.pcard.zptv_credit_approval.controller.ApprovalDetail" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Page id="pagedetail" title="Request Details" showNavButton="true" navButtonPress="onNavBack">
+		<VBox class="mainVBOXCSS">
+			<HBox class="mainHBOXCSS">
+				<Title text="Reporting Manager Details"></Title>
+			</HBox>
+			<HBox class="mainVBOXCSS">
+				<VBox width="15%">
+					<Label text="RACF ID #:" class="sapUiSmallMarginTop"/>
+				</VBox>
+				<VBox width="85%">
+					<Text text="{oDetailModel>/RepMgrId}" class="sapUiSmallMarginTop"/>
+				</VBox>
+			</HBox>
+			<HBox class="mainVBOXCSS">
+				<VBox width="15%">
+					<Label text="Name:" class="sapUiSmallMarginTop"/>
+				</VBox>
+				<VBox width="85%">
+					<Text text="{oDetailModel>/RepMgr}" class="sapUiSmallMarginTop"/>
+				</VBox>
+			</HBox>
+		</VBox>
+		<VBox class="mainVBOXCSS">
+			<HBox class="mainHBOXCSS">
+				<Title text="Employee Details"></Title>
+			</HBox>
+			<HBox class="mainVBOXCSS mainHBOXCSS">
+				<VBox width="15%">
+					<Label text="Employee ID #:" class="sapUiSmallMarginTop"/>
+				</VBox>
+				<VBox width="85%">
+					<Text text="{oDetailModel>/Pernr}" class="sapUiSmallMarginTop"/>
+				</VBox>
+			</HBox>
+			<HBox class="mainVBOXCSS">
+				<VBox width="15%">
+					<Label text="Last Name:" class="sapUiSmallMarginTop"/>
+				</VBox>
+				<VBox width="85%">
+					<Text text="{oDetailModel>/Nachn}" class="sapUiSmallMarginTop"/>
+				</VBox>
+			</HBox>
+			<HBox class="mainVBOXCSS">
+				<VBox width="15%">
+					<Label text="First Name:" class="sapUiSmallMarginTop"/>
+				</VBox>
+				<VBox width="85%">
+					<Text text="{oDetailModel>/Vorna}" class="sapUiSmallMarginTop"/>
+				</VBox>
+			</HBox>
+		</VBox>
+		<VBox class="mainVBOXCSS">
+			<HBox class="mainHBOXCSS">
+				<Title text="Credit Limit Request Details"></Title>
+			</HBox>
+			<HBox class="mainVBOXCSS mainHBOXCSS">
+				<VBox width="29%">
+					<Label text="Current Max.Monthly Limit:"/>
+				</VBox>
+				<VBox width="71%">
+					<ObjectNumber
+						number="{path: 'oDetailModel>/Maxcred',type : 'sap.ui.model.odata.type.String', constraints : {isDigitSequence : true, maxLength : 10 }}"
+						unit="USD" emphasized="false" state="None" class="currencyTextCSS"/>
+				</VBox>
+			</HBox>
+			<HBox class="mainVBOXCSS">
+				<VBox width="29%">
+					<Label text="Requested Max.Monthly Limit:" class="sapUiSmallMarginTop"/>
+				</VBox>
+				<VBox width="11%">
+					<ObjectNumber
+						number="{path: 'oDetailModel>/CrLimit', type : 'sap.ui.model.odata.type.String', constraints : {isDigitSequence : true, maxLength : 10 }}"
+						unit="USD" state="Information" inverted="true" class="currencyTextCSS sapUiSmallMarginTop"/>
+				</VBox>
+				<VBox width="60%">
+					<HBox>
+						<RadioButtonGroup columns="2">
+							<RadioButton text="Approve" selected="{oDetailModel>/CrStatus}"/>
+							<RadioButton text="Deny"/>
+						</RadioButtonGroup>
+					</HBox>
+				</VBox>
+			</HBox>
+			<HBox class="mainVBOXCSS">
+				<VBox width="30%">
+					<Label text="Reason for Request Exceeding Max.Monthly Limit:" class="sapUiSmallMarginTop"/>
+				</VBox>
+				<VBox width="70%">
+					<HBox>
+						<Text text="{oDetailModel>/CrReason}" class="sapUiSmallMarginTop"/>
+					</HBox>
+				</VBox>
+			</HBox>
+			<HBox class="mainVBOXCSS">
+				<VBox width="30%">
+					<Label text="Denial Reason:" class="sapUiSmallMarginTop"/>
+				</VBox>
+				<VBox width="70%">
+					<HBox>
+						<TextArea id="crNote" rows="4" value="{oDetailModel>/AprCrnote}" width="450px"
+							placeholder="Please provide a reason for your request, which doesn't exceeds the current maximum limit." cols="20" maxLength="400"
+							wrapping="Hard" enabled="true" required="true" valueStateText="Invalid entry" visible="true" class="sapUiSmallMarginTop"
+							showExceededText="true" valueLiveUpdate="true" valueState="{= ${oDetailModel>/AprCrnote}.length > 400 ? 'Warning' : 'None' }"
+							liveChange="handleLiveChange"/>
+					</HBox>
+				</VBox>
+			</HBox>
+			<HBox class="mainVBOXCSS mainHBOXCSS">
+				<VBox width="29%">
+					<Label text="Current Max.Transaction Limit:"/>
+				</VBox>
+				<VBox width="71%">
+					<ObjectNumber
+						number="{path:'oDetailModel>/Maxtrans',type : 'sap.ui.model.odata.type.String', constraints : {isDigitSequence : true, maxLength : 10 }}"
+						unit="USD" emphasized="false" state="None" class="currencyTextCSS "/>
+				</VBox>
+			</HBox>
+			<HBox class="mainVBOXCSS">
+				<VBox width="29%">
+					<Label text="Requested Max.Transaction Limit:" class="sapUiSmallMarginTop"/>
+				</VBox>
+				<VBox width="11%">
+					<ObjectNumber
+						number="{path:'oDetailModel>/TrLimit', type : 'sap.ui.model.odata.type.String', constraints : {isDigitSequence : true, maxLength : 10 }}"
+						unit="USD" state="Information" class="currencyTextCSS sapUiSmallMarginTop"/>
+				</VBox>
+				<VBox width="60%">
+					<HBox>
+						<RadioButtonGroup columns="2">
+							<RadioButton text="Approve" selected="{oDetailModel>/TrStatus}"/>
+							<RadioButton text="Deny"/>
+						</RadioButtonGroup>
+					</HBox>
+				</VBox>
+			</HBox>
+			<HBox class="mainVBOXCSS">
+				<VBox width="30%">
+					<Label text="Reason for Request Exceeding Max.Transaction Limit:" class="sapUiSmallMarginTop"/>
+				</VBox>
+				<VBox width="70%">
+					<HBox>
+						<Text text="{oDetailModel>/TrReason}" class="sapUiSmallMarginTop"/>
+					</HBox>
+				</VBox>
+			</HBox>
+			<HBox class="mainVBOXCSS">
+				<VBox width="30%">
+					<Label text="Denial Reason:" class="sapUiSmallMarginTop"/>
+				</VBox>
+				<VBox width="70%">
+					<HBox>
+						<TextArea id="trNote" rows="4" value="{oDetailModel>/AprTrnote}" width="450px"
+							placeholder="Please provide a reason for your request, which doesn't exceeds the current maximum limit." cols="20" maxLength="400"
+							wrapping="Hard" enabled="true" required="true" valueStateText="Invalid entry" visible="true" class="sapUiSmallMarginTop"
+							showExceededText="true" valueLiveUpdate="true" valueState="{= ${oDetailModel>/AprTrnote}.length > 400 ? 'Warning' : 'None' }"
+							liveChange="handleLiveChange"/>
+					</HBox>
+				</VBox>
+			</HBox>
+		</VBox>
+		<footer>
+			<OverflowToolbar id="otbFooterDetail">
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Submit" press="onFilesSubmitReq"/>
+				<Button type="Reject" text="Cancel" press="onFilesCancelReq"/>
+				<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

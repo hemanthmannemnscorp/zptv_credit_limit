@@ -1,0 +1,159 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "com.pcard.zptv_credit_approval",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZPTV_PCARD_LIMIT_SRV": {
+				"uri": "/sap/opu/odata/sap/ZPTV_PCARD_LIMIT_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/ZPTV_PCARD_LIMIT_SRV/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_bluecrystal"
+		]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "com.pcard.zptv_credit_approval.view.ApprovalHome",
+			"type": "XML",
+			"async": true,
+			"id": "ApprovalHome"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.m": {},
+				"sap.ui.core": {},
+				"sap.ui.layout": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.pcard.zptv_credit_approval.i18n.i18n"
+				}
+			},
+			"pcardListModel": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Request",
+					"useBatch": true
+				},
+				"dataSource": "ZPTV_PCARD_LIMIT_SRV",
+				"preload": true
+			},
+			"oFileMainModelJSON": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"preload": false
+			},
+			"oDetailModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"preload": false
+			},
+			"saveArrayModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"preload": false
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "com.pcard.zptv_credit_approval.view",
+				"controlAggregation": "pages",
+				"controlId": "idAppControl",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "TargetApprovalHome",
+					"pattern": "TargetApprovalHome",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"TargetApprovalHome"
+					]
+				},
+				{
+					"name": "ApprovalDetail",
+					"pattern": "ApprovalDetail/{pernr},{card}",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"ApprovalDetail"
+					]
+				}
+			],
+			"targets": {
+				"TargetApprovalHome": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "ApprovalHome",
+					"viewName": "ApprovalHome"
+				},
+				"ApprovalDetail": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewName": "ApprovalDetail",
+					"viewLevel": 2,
+					"viewId": "ApprovalDetail"
+				}
+			}
+		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zptv_cred_appr1",
+		"_version": "1.1.0"
+	}
+}

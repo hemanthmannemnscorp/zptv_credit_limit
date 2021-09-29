@@ -1,0 +1,83 @@
+{
+    "resources": [
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "controller/ApprovalHome.controller.js"
+        },
+        {
+            "name": "controller/ApprovalDetail.controller.js"
+        },
+        {
+            "name": "serviceBinding.js"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "manifest-bundle.zip"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/ApprovalHome-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/ApprovalDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "serviceBinding-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../../sap-ui-version.json"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "di.code-validation.core_issues.json"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "localService/ZPTV_PCARD_LIMIT_SRV/metadata.xml"
+        },
+        {
+            "name": "view/ApprovalHome.view.xml"
+        },
+        {
+            "name": "view/ApprovalDetail.view.xml"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "fragments/approvalTable.fragment.xml"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "index.html"
+        }
+    ]
+}

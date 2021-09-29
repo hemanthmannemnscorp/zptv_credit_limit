@@ -1,0 +1,53 @@
+ <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Table  items="{ path: '/' }" id="idFileApprovalTable" 
+  sticky="ColumnHeaders">
+		<columns>
+			<Column width="5em">
+				<Text text="Submitted Requested Date"/>
+			</Column>
+			<Column width="5em">
+				<Text text="Reporting Manager"/>
+			</Column>
+			<Column width="5em">
+				<Text text="Reporting Manager Name"/>
+			</Column>
+			<Column width="5em">
+				<Text text="Employee ID"/>
+			</Column>
+			<Column width="5em">
+				<Text text="Employee Last Name"/>
+			</Column>
+			<Column width="5em">
+				<Text text="Employee First Name"/>
+			</Column>
+			<Column width="5em">
+				<Text text="Maximum Credit Limit Requested"/>
+			</Column>
+			<Column width="5em">
+				<Text text="Maximum Transaction Limit Requested"/>
+			</Column>
+			<!--<Column width="5em">-->
+			<!--	<Text text="Credit Limit Status"/>-->
+			<!--</Column>-->
+			<!--<Column width="5em">-->
+			<!--	<Text text="Transaction Limit Status"/>-->
+			<!--</Column>-->
+		</columns>
+		<items>
+			<ColumnListItem type="Navigation" press="onNextPress">
+				<cells>
+					<Text text="{path: 'TrDate', type: 'sap.ui.model.odata.type.DateTime', constraints : {displayFormat: 'Date'}}"/>
+					<Text text="{RepMgrId}"/>
+					<Text text="{RepMgr}"/>
+					<Text text="{Pernr}"/>
+					<Text text="{Nachn}"/>
+					<Text text="{Vorna}"/>
+					<Text text="{CrLimit}"/>
+					<Text text="{TrLimit}"/>
+					<!--<Text text="{CrStatus}"/>-->
+					<!--<Text text="{TrStatus}"/>-->
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>
