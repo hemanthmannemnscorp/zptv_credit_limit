@@ -18,7 +18,7 @@ sap.ui.define([
 		onInit: function () {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("ApprovalDetail").attachPatternMatched(this._onObjectMatched, this);
- 
+  
 		},
 		_onObjectMatched: function (oEvent) {
 			var pernr = oEvent.getParameter("arguments").pernr;
